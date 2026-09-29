@@ -1,0 +1,73 @@
+{
+  "capability_id": "lookup_savings_balance",
+  "name": "Lookup Savings Balance",
+  "description": "Search the Northstar training portal for a member and retrieve their savings balance.",
+  "created_at": "2026-09-29T19:19:58.832358+00:00",
+  "source": "agent_discovery",
+  "version": "1.0",
+  "inputs": {
+    "member_id": "12345"
+  },
+  "steps": [
+    {
+      "action": "goto",
+      "selector": null,
+      "value": null,
+      "path": "/",
+      "description": "Open application"
+    },
+    {
+      "action": "fill",
+      "selector": "#username",
+      "value": "operator",
+      "path": null,
+      "description": "Enter operator username"
+    },
+    {
+      "action": "fill",
+      "selector": "#password",
+      "value": "demo123",
+      "path": null,
+      "description": "Enter operator password"
+    },
+    {
+      "action": "click",
+      "selector": "button[type='submit']",
+      "value": null,
+      "path": null,
+      "description": "Sign in"
+    },
+    {
+      "action": "fill",
+      "selector": "#member_id",
+      "value": "{{member_id}}",
+      "path": null,
+      "description": "Enter member ID"
+    },
+    {
+      "action": "click",
+      "selector": ".search-button",
+      "value": null,
+      "path": null,
+      "description": "Search for member"
+    },
+    {
+      "action": "extract_text",
+      "selector": "#savings-balance",
+      "value": null,
+      "path": null,
+      "description": "Read savings balance"
+    }
+  ],
+  "expected_outcome": {
+    "selector": "#savings-balance",
+    "expected_text": "8720.5",
+    "description": "Savings balance is visible"
+  },
+  "metadata": {
+    "planner": "local_rule_based",
+    "llm_used": "false",
+    "replay_mode": "deterministic",
+    "environment": "training"
+  }
+}

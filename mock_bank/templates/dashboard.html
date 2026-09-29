@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Member Search | Northstar Credit Union{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumb">
+    Operations / Member Search
+</div>
+
+<div class="page-header">
+    <div>
+        <h1>Member Search</h1>
+        <p>Search the core member directory using a Member ID.</p>
+    </div>
+
+    <div class="page-status">
+        <span class="status-dot"></span>
+        Core system available
+    </div>
+</div>
+
+<section class="card search-card">
+
+    <div class="card-header">
+        <div>
+            <h2>Find a Member</h2>
+            <p>
+                Enter a member identifier to retrieve the
+                member profile and account information.
+            </p>
+        </div>
+    </div>
+
+    <form action="/members/search"
+          method="post"
+          class="member-search-form">
+
+        <div class="form-group">
+
+            <label for="member_id">Member ID</label>
+
+            <div class="help-text">
+                Enter the member's numeric identifier.
+            </div>
+
+            <input
+                id="member_id"
+                name="member_id"
+                type="text"
+                inputmode="numeric"
+                placeholder="Example: 12345"
+                autocomplete="off"
+                required
+            >
+
+        </div>
+
+        <button
+            class="primary-button search-button"
+            type="submit">
+            Search Member
+        </button>
+
+    </form>
+
+</section>
+
+
+<section class="dashboard-grid">
+
+    <div class="info-card">
+
+        <div class="info-card-title">
+            Operator Notice
+        </div>
+
+        <p>
+            Access to member information is logged.
+            Use this system only for authorized member
+            servicing activities.
+        </p>
+
+    </div>
+
+    <div class="info-card">
+
+        <div class="info-card-title">
+            Search Tips
+        </div>
+
+        <p>
+            Member IDs contain five numeric characters.
+            Verify the identifier before initiating a search.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="card recent-card">
+
+    <div class="card-header">
+        <div>
+            <h2>Recent Activity</h2>
+            <p>Current operator session</p>
+        </div>
+    </div>
+
+    <table class="activity-table">
+
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Activity</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>09:42</td>
+                <td>Operator session started</td>
+                <td>
+                    <span class="small-status success">
+                        Complete
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>09:42</td>
+                <td>Core banking connection verified</td>
+                <td>
+                    <span class="small-status success">
+                        Online
+                    </span>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northstar Credit Union | Member Operations</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+
+<body class="login-body">
+
+<main class="login-container">
+    <section class="login-card">
+
+        <div class="login-brand">
+            <div class="logo-mark">N</div>
+            <div>
+                <h1>Northstar Credit Union</h1>
+                <p>Member Operations Portal</p>
+            </div>
+        </div>
+
+        <div class="environment-banner">
+            TRAINING ENVIRONMENT — FICTIONAL DATA ONLY
+        </div>
+
+        <div class="login-heading">
+            <h2>Sign in</h2>
+            <p>Use your operations credentials to access member servicing tools.</p>
+        </div>
+
+        {% if request.query_params.get("error") %}
+        <div class="alert alert-error" role="alert">
+            <strong>Sign-in failed.</strong>
+            Check your username and password and try again.
+        </div>
+        {% endif %}
+
+        <form action="/login" method="post">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    autocomplete="username"
+                    placeholder="Enter username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Enter password"
+                    required
+                >
+            </div>
+
+            <button class="primary-button" type="submit">
+                Sign In
+            </button>
+
+        </form>
+
+        <div class="demo-box">
+            <strong>Demo credentials</strong>
+            <div>Username: <code>operator</code></div>
+            <div>Password: <code>demo123</code></div>
+        </div>
+
+        <p class="security-notice">
+            Authorized personnel only. Activity in this training environment may be logged.
+        </p>
+
+    </section>
+</main>
+
+</body>
+</html>

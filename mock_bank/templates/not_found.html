@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Member Not Found | Northstar Credit Union{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumb">
+    Operations / Member Search / No Result
+</div>
+
+<div class="page-header">
+    <div>
+        <h1>Member Search</h1>
+        <p>Search result</p>
+    </div>
+</div>
+
+<section class="card">
+
+    <div
+        class="alert alert-error large-alert"
+        role="alert"
+        id="member-not-found"
+        data-outcome="MEMBER_NOT_FOUND"
+    >
+
+        <div class="error-icon">!</div>
+
+        <div>
+            <strong>Member not found</strong>
+
+            <p>
+                No member record was found for Member ID
+                <strong id="searched-member-id">{{ member_id }}</strong>.
+            </p>
+
+            <p class="error-help">
+                Verify the Member ID and try the search again.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<a class="secondary-button" href="/dashboard">
+    ← Return to Member Search
+</a>
+
+{% endblock %}

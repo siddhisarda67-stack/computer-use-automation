@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}Member Details | Northstar Credit Union{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumb">
+    Operations / Member Search / {{ member.member_id }}
+</div>
+
+<div class="page-header">
+    <div>
+        <h1>Member Details</h1>
+        <p>
+            Member ID:
+            <strong id="member-id">{{ member.member_id }}</strong>
+        </p>
+    </div>
+
+    <span class="status-badge">
+        {{ member.status }}
+    </span>
+</div>
+
+
+<section class="card">
+
+    <div class="card-header">
+        <div>
+            <h2>Member Profile</h2>
+            <p>Core member information</p>
+        </div>
+    </div>
+
+    <div class="details-grid">
+
+        <div class="detail-item">
+            <span class="field-label">Member Name</span>
+            <span class="field-value" id="member-name">
+                {{ member.name }}
+            </span>
+        </div>
+
+        <div class="detail-item">
+            <span class="field-label">Member Since</span>
+            <span class="field-value">
+                {{ member.member_since }}
+            </span>
+        </div>
+
+        <div class="detail-item">
+            <span class="field-label">Email</span>
+            <span class="field-value">
+                {{ member.email }}
+            </span>
+        </div>
+
+        <div class="detail-item">
+            <span class="field-label">Phone</span>
+            <span class="field-value">
+                {{ member.phone }}
+            </span>
+        </div>
+
+        <div class="detail-item detail-wide">
+            <span class="field-label">Address</span>
+            <span class="field-value">
+                {{ member.address }}
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <div class="card-header">
+        <div>
+            <h2>Deposit Accounts</h2>
+            <p>Current account information</p>
+        </div>
+
+        <span class="account-count">
+            {{ member.accounts|length }} accounts
+        </span>
+    </div>
+
+    <div class="table-container">
+
+        <table class="accounts-table">
+
+            <thead>
+                <tr>
+                    <th>Account Type</th>
+                    <th>Account Number</th>
+                    <th>Status</th>
+                    <th class="amount">Current Balance</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for account in member.accounts %}
+
+                <tr>
+                    <td>
+                        <div class="account-type">
+                            {{ account.type }}
+                        </div>
+                    </td>
+
+                    <td>
+                        •••• {{ account.last4 }}
+                    </td>
+
+                    <td>
+                        <span class="small-status success">
+                            {{ account.status }}
+                        </span>
+                    </td>
+
+                    <td
+                        class="amount balance-value"
+                        {% if account.type|lower == "savings" %}
+                        id="savings-balance"
+                        data-account-type="savings"
+                        {% endif %}
+                    >
+                        {{ account.balance }}
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<section class="card servicing-card">
+
+    <div class="card-header">
+        <div>
+            <h2>Member Servicing</h2>
+            <p>Available servicing actions</p>
+        </div>
+    </div>
+
+    <div class="action-row">
+
+        <button class="secondary-action" disabled>
+            Update Contact Information
+        </button>
+
+        <button class="secondary-action" disabled>
+            Account Maintenance
+        </button>
+
+        <button class="danger-action" disabled>
+            Close Account
+        </button>
+
+    </div>
+
+    <p class="action-note">
+        Transactional actions are disabled in the training environment.
+    </p>
+
+</section>
+
+
+<a class="secondary-button" href="/dashboard">
+    ← Return to Member Search
+</a>
+
+{% endblock %}

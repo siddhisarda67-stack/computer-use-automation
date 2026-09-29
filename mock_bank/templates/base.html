@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Northstar Credit Union{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-mark">N</div>
+        <div>
+            <div class="brand-name">Northstar Credit Union</div>
+            <div class="brand-subtitle">Member Operations</div>
+        </div>
+    </div>
+
+    <div class="topbar-right">
+        <div class="environment">TRAINING ENVIRONMENT</div>
+
+        <div class="operator-profile">
+            <div class="operator-avatar">DU</div>
+            <div>
+                <div class="operator-name">Demo User</div>
+                <div class="operator-role">Member Services</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <nav>
+            <div class="nav-section">OPERATIONS</div>
+
+            <a class="nav-item" href="/dashboard">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a class="nav-item active" href="/dashboard">
+                <span class="nav-icon">⌕</span>
+                Member Search
+            </a>
+
+            <div class="nav-section">SERVICING</div>
+
+            <span class="nav-item disabled">
+                <span class="nav-icon">↔</span>
+                Transactions
+            </span>
+
+            <span class="nav-item disabled">
+                <span class="nav-icon">▤</span>
+                Account Maintenance
+            </span>
+
+            <div class="nav-section">ADMINISTRATION</div>
+
+            <span class="nav-item disabled">
+                <span class="nav-icon">▥</span>
+                Reports
+            </span>
+
+            <span class="nav-item disabled">
+                <span class="nav-icon">⚙</span>
+                Administration
+            </span>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="system-indicator">
+                <span class="status-dot"></span>
+                Core Banking <strong>Online</strong>
+            </div>
+
+            <div class="version">
+                Operations Portal v2.4
+            </div>
+        </div>
+    </aside>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+<footer class="footer">
+    <span>Northstar Credit Union — Training Environment</span>
+    <span>Fictional data only</span>
+</footer>
+
+</body>
+</html>
